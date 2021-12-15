@@ -6,14 +6,14 @@ MODS=main menu game space spaceBlank spaceTrap spaceRock spaceHole indiana item 
 SRC=./src
 OBJ=./obj
 
-objects= $(addsuffix .o, $(addprefix $(OBJDIR)/, $(MODS)))
-sources= $(addsuffix .cpp, $(addprefix $(SRCDIR)/, $(MODS)))
+objects= $(addsuffix .o, $(addprefix $(OBJ)/, $(MODS)))
+sources= $(addsuffix .cpp, $(addprefix $(SRC)/, $(MODS)))
 
 TheGame: $(objects)
 	$(CC) $(LFLAGS) $(objects) -o $@
 
 ./obj/%.o: ./src/%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@ -I.
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f obj/*.o TheGame
