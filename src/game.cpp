@@ -18,9 +18,9 @@
 #include <iostream>
 #include <time.h>
 
+using std::cin;
 using std::cout;
 using std::endl;
-using std::cin;
 using std::string;
 
 // Constructor runs program
@@ -48,7 +48,7 @@ Game::Game()
 
 		if(menu.getChoice() == 1)
 		{
-			// Summon his majesty
+			// Summon the protagonist
 			Indiana Jones;
 
 			// Direction tracks user's desired move
@@ -62,12 +62,13 @@ Game::Game()
 			bool straightHat = false;	// Is his hat straight?
 			bool across     = false;	// Has he crossed the cavernous abyss?
 
-			Link inventory; // Generate Indy's inventory and equip him with his classic set
+            // Generate Indy's inventory and equip him with his classic set
+			Link inventory; 
 
 			Item * sandbag = new Item("Bag of Sand");		// Mandatory Item
 			inventory.addHead(sandbag);
 
-			Item * sidearm = new Item("Trusty Sidearm");	// No real use as of this build
+			Item * sidearm = new Item("Trusty Sidearm");	// No real use in a cave but whatever
 			inventory.addHead(sidearm);
 
 			Item * bottle = new Item("Water Bottle");		// Heals Indy
@@ -87,9 +88,9 @@ Game::Game()
 
 			// Start fresh
 			menu.clear();
+            // An array of pointers pointing to arrays of Space pointers!! Whaaaa..
+			Space*** array = new Space ** [rows];
 
-			Space*** array = new Space ** [rows];           // An array of pointers pointing to arrays of Space pointers!! Whaaaa
-															// 10 Rows, 5 columns
 			for(int i = 0; i < rows; i++)
 			{
 				array[i] = new Space*[cols];
@@ -284,8 +285,6 @@ Game::Game()
 				validInput = false;
 				currentSpace = array[Jones.getYpos()][Jones.getXpos()];
 
-				// cout << "\nCurrentSpace\n   up: " << currentSpace->getUp() << "\n   down: " << currentSpace->getDown() << "\n   right: " << currentSpace->getRight() << "\n   left: " << currentSpace->getLeft() << "\n";
-
 				while(!validInput)
 				{	validInput = Jones.validateDirection();	}
 
@@ -375,7 +374,8 @@ Game::Game()
 				{
 					if(currentSpace->getRight() != nullptr)
 					{	
-						Space * temp = currentSpace->getRight();	// No rock spaces!
+                        // No rock spaces!
+						Space * temp = currentSpace->getRight();
 						if (temp->getType() == 'R')
 						{
 							menu.print(8);
@@ -739,6 +739,7 @@ Game::Game()
 			{
 				delete [] array[i];
 			}
+
   			delete [] array;
 
 			for ( int i = 0 ; i < 10 ; i++)
@@ -751,7 +752,9 @@ Game::Game()
 		if(menu.getChoice() == 2)
 		{
 			quit = true;
-			cout << "\n\n\t\tThx4playing!\n\n";
+            //getchar();
+            menu.clear();
+			cout << "\n\n\t\tThx4playing! [Exited]\n\n";
 		}
 	}
 }

@@ -61,7 +61,7 @@ void Menu::print(int message)
 
 	if (message == 6)
 	{
-		cout << "\n   Indy spots a hanging rocky stalactite, latches it with his whip, and SWINGS across the cavernous abyss!!\n\n";
+		cout << "\n   From the cold ceiling, Indy spots a descending rocky stalactite, he latches it with his whip, and SWINGS across the cavernous abyss!!\n\n";
 	}
 
 	if (message == 7)
@@ -71,7 +71,7 @@ void Menu::print(int message)
 
 	if (message == 8)
 	{
-		cout << "\n   There's a big rock in the way!!\n\n";
+		cout << "\n   There's a big rock in the way!\n\n";
 	}
 
 	if (message == 9)
@@ -94,7 +94,7 @@ void Menu::print(int message)
 	}
 	if (message == 13)
 	{
-		cout << "\n   Indy's HP has reached zero after falling prey to a trap. \n\n   He remarks upon his situation with a sly one-liner for none to hear, then passes away..\n\n";
+		cout << "\n   Indy's HP reaches zero after falling prey to another trap. \n\n   He remarks upon his dire situation with a sly one-liner for none to hear, then passes away..\n\n";
 	}
 
 	if (message == 14)
@@ -104,18 +104,19 @@ void Menu::print(int message)
 
 	if (message == 15)
 	{
-		cout << "\n   Indy crumples his empty water bottle with remorse\n\n";
+		cout << "\n   Indy puts his cantine to his mouth only to find it empty.\n\n";
 	}
 
 	if (message == 16)
 	{
 		cout << "\n   Indy spots a precariously positioned rock. He shoots it with his trusty sidearm..\n\n";
-		cout << "      ..It's a bullseye.. of course..\n\n";
+        cout << "\n   PLINK!\n\n";
+		cout << "   Bullseye.\n\n";
 	}
 	if (message == 17)
 	{
 		cout << "\n   BASKING in the light from the GOLDEN IDOL, Indiana Jones feels the weight of his bag of sand.\n";
-		cout << "      Eyeing the weight of the idol, he empties some sand onto the temple floor..\n";
+		cout << "      Eyeing the weight of the IDOL, he empties some sand onto the temple floor..\n";
 		cout << "         ..and slowly replaces the IDOL with his bag, keeping the IDOL in his possession.\n\n\n\n";
 	}
 	if (message == 18)
@@ -125,7 +126,7 @@ void Menu::print(int message)
 
 	if (message == 19)
 	{
-		cout << "\n   Indy slyly remarks upon his success\n\n";
+		cout << "\n   Indy slyly remarks upon his apparent success\n\n";
 	}
 
 	if (message == 20)
@@ -143,11 +144,11 @@ void Menu::print(int message)
 		cout << "\n\n      Welcome to the INDIANA JONES GOLDEN IDOL HEIST SIMULATOR\n\n";
 		cout << "      We find our hero navigating the ruins of an ANCIENT TEMPLE\n\n";
 		cout << "      You must help him find his way to the IDOL using the W-A-S-D keys and pressing [ENTER]\n\n";
-		cout << "      On your way you will take damage from hidden TRAP SPACES, it's best to remember where they are..\n\n";
+		cout << "      On your way you will take damage from hidden TRAP SPACES! It's best to remember where those are..\n\n";
 		cout << "      Indy comes equipped with ITEMS to aid his journey, access them by pressing [i] + [ENTER]\n\n";
-		cout << "      The GOLDEN IDOL space is marked with an [I], Indy is the [O] which you will move.\n\n";
-		cout << "      Finally, press [SHIFT] + [x] -> [ENTER] to exit the simulator.\n\n";
-		cout << "      When Indy has the IDOL and leaves the room safely, you win. Good luck.\n\n";
+		cout << "      The GOLDEN IDOL space is marked with an 'I', Indy is the [O] which you will move.\n\n";
+		cout << "      Finally, type 'X' and press [ENTER] to exit the simulator.\n\n";
+		cout << "      When Indy has the IDOL and leaves the room safely, you win! Good luck!\n\n";
 	}
 }
 
@@ -240,5 +241,5 @@ int Menu::roll(int range)
  ***********************************/
 void Menu::clear()
 {	
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"; // lol
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"; // lololol
 }
