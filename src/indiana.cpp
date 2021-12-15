@@ -149,11 +149,11 @@ bool Indiana::validateDirection()
 		cin.clear();
 		cin.ignore(256, '\n');
 		inputBool = true;
-		return inputBool;
 	}
 	//Prompt user for reentry if they entered an integer if outside acceptable range
 	else
 	{	
 		cout << "\n\n   Please enter \"w\",\"a\",\"s\", or \"d\" to choose a direction, \"i\" to use an item, or \"X\" to exit\n\n  >> ";
 	}
+    return inputBool;
 }

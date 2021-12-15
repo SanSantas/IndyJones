@@ -26,9 +26,11 @@ using std::string;
 // Constructor runs program
 Game::Game()
 {
-	bool validInput = false;				// Initalize variables needed for menu
+	// Initalize variables needed for menu
+	bool validInput = false;
 	bool quit 		= false;
-	srand(time(0));							// Seed rand to make a new board each playthrough
+	// Seed rand to make a new board each playthrough
+	srand(time(0));
 	Menu menu;
 	menu.clear();
 	menu.print(0);
@@ -98,45 +100,52 @@ Game::Game()
 			{
 				for( int j = 0 ; j < cols; ++j)
 				{
-					if ( i == 4 || i == 5)					// Row 4 and 5 is the {{{CAVERNOUS ABYSS}}}
+	                // Row 4 and 5 is the {{{CAVERNOUS ABYSS}}}
+					if ( i == 4 || i == 5)
 					{
 						array[i][j] = new HoleSpace;
 					}
 
-					else if (i == 1 && j == 3)				// Idol space is a special rockspace
+                    // Idol space is a special rockspace
+					else if (i == 1 && j == 3)
 					{
 						array[i][j] = new RockSpace;
 					}
-
-					else if ((i == 1 && j == 4) || (i == 1 && j == 2) || (i == 0 && j == 3))				// Surrounding idol spaces are Rocks for aesthetic purposes
+                    // Surrounding idol spaces are Rocks for aesthetic purposes
+					else if ((i == 1 && j == 4) || (i == 1 && j == 2) || (i == 0 && j == 3))
 					{
 						array[i][j] = new RockSpace;
 					}
-
-					else if (i == 2 && j == 3)				// Space in front of the Idol should be defined or it could be sealed off randomly
+                    // Space in front of the Idol should be defined or it could be sealed off randomly
+					else if (i == 2 && j == 3)
 					{
 						array[i][j] = new BlankSpace;
 					}
-					else if (i == 19 && j == 3)				// Space in front of entry/exit should not be a rock, that's a fire hazard
+                    // Space in front of entry/exit should not be a rock, that's a fire hazard
+					else if (i == 19 && j == 3)
 					{
 						array[i][j] = new BlankSpace;
 					}
 					else
 					{
-						int roll = menu.roll(100);			// Roll for all other spaces
+                        // Roll for all other spaces
+						int roll = menu.roll(100);
 						if (roll > 85)
 						{
-							array[i][j] = new TrapSpace;	// 14% chance a space is a trap
+                            // 14% chance a space is a trap
+							array[i][j] = new TrapSpace;
 						}
 
 						else if (roll > 70)
 						{
-							array[i][j] = new RockSpace;	// 15% chance to be a rock
+                            // 15% chance to be a rock
+							array[i][j] = new RockSpace;
 						}
 
 						else
 						{
-							array[i][j] = new BlankSpace;	// Otherwise just a plain 'ol space
+                            // Otherwise just a plain 'ol space
+							array[i][j] = new BlankSpace;	
 						}
 					}
 					
@@ -197,7 +206,6 @@ Game::Game()
 			}
 
 			// Print manual / Print Board / UI --------------------------->>>
-
 			menu.print(22);	// Manual
 
 			cout << "   Indiana Jones\n";
@@ -209,36 +217,39 @@ Game::Game()
 			cout <<     "                                       _________\n";  // Formatting
 			for ( int i = 0 ; i < rows ; ++ i )
 			{
-				cout << "                                       |";				// More formatting
+                // More formatting
+				cout << "                                       |";
 				for(int j = 0 ; j < cols ; ++j)
 				{
 					Space * temp = array[i][j];
 
-					if (i == Jones.getYpos() && j == Jones.getXpos())			// Start Position defined in Indiana class
+                    // Start Position defined in Indiana class
+					if (i == Jones.getYpos() && j == Jones.getXpos())
 					{
 						cout << "O";
 					}
 
 					else
 					{
-
-						if (temp->getType() == 'B')			// Blank space is an apostrophe
+                        // Blank space is an apostrophe
+						if (temp->getType() == 'B')
 						{
 							cout << '\'';
 						}
-
-						else if (temp->getType() == 'H')	// Hole is a [space]
+                        // Hole is a [space]
+						else if (temp->getType() == 'H')	
 						{
 							cout << ' ';
 						}
-
-						else if (temp->getType() == 'R')	// Rocks are X's
+                        // Rocks are X's
+						else if (temp->getType() == 'R')	
 						{
 							if (i == 1 && j == 3)
 							{
 								if(!hasIdol)
 								{
-									cout << 'I';			// Idol space is a non-default rock space
+                                    // Idol space is a non-default rock space
+									cout << 'I';			
 								}
 								else
 								{
@@ -289,39 +300,46 @@ Game::Game()
 				// If player wants to move upwards..
 				if (direction == 'w')
 				{
-					if(currentSpace->getUp() != nullptr)		// Ensure player is not on border space
+		            // Ensure player is not on border space
+					if(currentSpace->getUp() != nullptr)
 					{
 						Space * temp = currentSpace->getUp();
 						if (temp->getType() == 'R')
 						{
-							menu.print(8);						// "A Rock is in your way!"
+                            // "A Rock is in your way!"
+							menu.print(8);
 						}
 
 						else
 						{
-							Jones.setYpos(Jones.getYpos() - 1);		// Set the new Y-coordinate position based on the current position
+		                    // Set the new Y-coordinate position based on the current position
+							Jones.setYpos(Jones.getYpos() - 1);
 						}
 					}
 
 					else
 					{
-						menu.print(2);							// "A wall is in the way .. "
+                        // "A wall is in the way .. "
+						menu.print(2);
 					}
 
-					if(Jones.getYpos() == 6)					// Print a message if the cavernous pit is in your path
+                    // Print a message if the cavernous pit is in your path
+					if(Jones.getYpos() == 6)
 					{
 						menu.print(3);
 					}
 				}
 
 				if (direction == 's')
-				{
-					if (Jones.getXpos() == 3 && Jones.getYpos() == 19 && !hasIdol)		// Exit/win space needs the idol
+				{		
+                    // Exit/win space needs the idol
+					if (Jones.getXpos() == 3 && Jones.getYpos() == 19 && !hasIdol)
 					{
 						menu.print(12);
 					}
 
-					else if (Jones.getXpos() == 3 && Jones.getYpos() == 19 && hasIdol)	// You win if you've got the idol
+	                // You win if you've got the idol
+					else if (Jones.getXpos() == 3 && Jones.getYpos() == 19 && hasIdol)
 					{
 						gameOver = true;
 						wins	 = true;
@@ -330,7 +348,8 @@ Game::Game()
 					else if (currentSpace->getDown() != nullptr)
 					{
 						Space * temp = currentSpace->getDown();
-						if (temp->getType() == 'R')					// Can't move into rocks unless you swing onto them with your whip from across the cavern
+                        // Can't move into rocks unless you swing onto them with your whip from across the cavern
+						if (temp->getType() == 'R')
 						{
 							menu.print(8);
 						}
@@ -342,10 +361,11 @@ Game::Game()
 
 					else
 					{
-						menu.print(2);		// walked into a wall -_-
+		                // walked into a wall -_-
+						menu.print(2);
 					}
-
-					if(Jones.getYpos() == 3)					// Print a warning if the cavernous abyss is in your path
+					// Print a warning if the cavernous abyss is in your path
+					if(Jones.getYpos() == 3)
 					{
 						menu.print(3);
 					}
@@ -395,34 +415,40 @@ Game::Game()
 				{
 					menu.print(9);
 				}
-
-				if (direction == 'i') // items!
+                // items!
+				if (direction == 'i') 
 				{
-					if(!hasIdol)			// For the idol message
+			        // For the idol message
+					if(!hasIdol)
 					{
-						inventory.display();				// Show inventory
+                        // Show inventory
+						inventory.display();
 						cout << "      6) Do nothing\n";
 						validInput = false;
 
 						while(!validInput)
 						{	
 							menu.print(5);
-							validInput = menu.validate(1, 6);	// Prompt user for item use
+	                        // Prompt user for item use
+							validInput = menu.validate(1, 6);
 						}
 
 						// clear screen after choosing item
 						menu.clear();
 
-						if (menu.getChoice() == 1)				// Whip scenarios
+                    	// Whip scenarios
+						if (menu.getChoice() == 1)
 						{
-							if (Jones.getYpos() == 6)			// Traverse the cavernous abyss
+			                // Traverse the cavernous abyss
+							if (Jones.getYpos() == 6)
 							{
 								Jones.setYpos(3);
 								menu.print(6);
 								across = true;
 							}
 
-							else if (Jones.getYpos() == 3)		// Return
+		                    // Return
+							else if (Jones.getYpos() == 3)
 							{
 								Jones.setYpos(6);
 								menu.print(6);
@@ -435,7 +461,8 @@ Game::Game()
 							}
 						}
 
-						if (menu.getChoice() == 2)				// Hat scenarios
+				        // Hat scenarios
+						if (menu.getChoice() == 2)
 						{
 							if (!straightHat)
 							{
@@ -448,7 +475,8 @@ Game::Game()
 							}
 						}
 
-						if (menu.getChoice() == 3)				// Bottled Water scenarios
+                        // Bottled Water scenarios
+						if (menu.getChoice() == 3)
 						{
 							if(!drankWater)
 							{
@@ -461,28 +489,33 @@ Game::Game()
 								menu.print(15);
 							}
 						}
-						
-						if (menu.getChoice() == 4)				// Trusty Sidearm scenarios
+
+                        // Trusty Sidearm scenarios
+						if (menu.getChoice() == 4)
 						{
 							menu.print(16);
 						}
 
-						if (menu.getChoice() == 5)				// Bag of Sand used to get the idol
+				        // Bag of Sand used to get the idol
+						if (menu.getChoice() == 5)
 						{
-							if(Jones.getXpos() == 3 && Jones.getYpos() == 2)	// If on Idol space..
+	                        // If on Idol space..
+							if(Jones.getXpos() == 3 && Jones.getYpos() == 2)
 							{
 								menu.print(17);
-
-								Item * idol = new Item("THE GOLDEN IDOL");		// Add it to the inventory
+		                        // Add it to the inventory
+								Item * idol = new Item("THE GOLDEN IDOL");
 								inventory.addHead(idol);
-								inventory.removeTail();							// Remove bag of sand from inventory
-
-								hasIdol = true;									// Game-winning bool
+                                // Remove bag of sand from inventory
+								inventory.removeTail();
+                                // Game-winning bool
+								hasIdol = true;
 
 							}
 							else
 							{
-								menu.print(18);				// Otherwise feel the weight of the bag
+                                // Otherwise feel the weight of the bag
+								menu.print(18);				
 							}
 						}
 					}
@@ -496,27 +529,30 @@ Game::Game()
 						while(!validInput)
 						{	
 							menu.print(5);
-							validInput = menu.validate(1, 6);	
+							validInput = menu.validate(1, 6);
 						}
 
 						// clear screen after choosing item
 						menu.clear();
 
-						if (menu.getChoice() == 1)				// Golden Idol
+                        // Golden Idol
+						if (menu.getChoice() == 1)
 						{
 							menu.print(19);
 						}
 
-						if (menu.getChoice() == 2)				// Whip scenarios
+                        // Whip scenarios
+						if (menu.getChoice() == 2)
 						{
-							if (Jones.getYpos() == 6)			// Traverse the cavernous abyss
+                            // Traverse the cavernous abyss
+							if (Jones.getYpos() == 6)
 							{
 								Jones.setYpos(3);
 								menu.print(6);
 								across = true;
 							}
-
-							else if (Jones.getYpos() == 3)		// Return
+		                    // Return
+							else if (Jones.getYpos() == 3)
 							{
 								Jones.setYpos(6);
 								menu.print(6);
@@ -528,8 +564,8 @@ Game::Game()
 								menu.print(7);
 							}
 						}
-
-						if (menu.getChoice() == 3)				// Hat scenarios
+                        // Hat scenarios
+						if (menu.getChoice() == 3)
 						{
 							if (!straightHat)
 							{
@@ -541,12 +577,12 @@ Game::Game()
 								menu.print(11);
 							}
 						}
-
-						if (menu.getChoice() == 4)				// Bottled Water scenarios
+				        // Bottled Water scenarios
+						if (menu.getChoice() == 4)
 						{
 							if(!drankWater)
 							{
-								menu.print(14);			
+								menu.print(14);
 								Jones.setHP(Jones.getHP() + 10);
 								drankWater = true;
 							}
@@ -555,8 +591,8 @@ Game::Game()
 								menu.print(15);
 							}
 						}
-						
-						if (menu.getChoice() == 5)				// Trusty Sidearm scenarios
+						// Trusty Sidearm scenarios
+						if (menu.getChoice() == 5)
 						{
 							menu.print(16);
 						}
@@ -565,10 +601,11 @@ Game::Game()
 
 				// Update Indi's position
 				currentSpace = array[Jones.getYpos()][Jones.getXpos()];
-
-				if (currentSpace->getType() == 'T')		// A trap!
+		        // A trap!
+				if (currentSpace->getType() == 'T')
 				{
-					int roll = menu.roll(8);			// Rolls 1d8 for damage
+                    // Rolls 1d8 for damage
+					int roll = menu.roll(8);
 					menu.print(21);
 					Jones.setHP(Jones.getHP() - roll);
 					cout << "   He has taken " << roll << " points of damage!\n\n"; // print to screen
@@ -582,16 +619,18 @@ Game::Game()
 				// If Indi walks into the carvernous pit..
 				if (currentSpace->getType() == 'H')
 				{
-					if(!across)		// Change teleport point depending on whether he's already crossed the abyss
+                    // Change teleport point depending on whether he's already crossed the abyss
+					if(!across)
 					{
 						menu.print(4);
-						Jones.setXpos(3);		// Define Indy's new position
+		                // Define Indy's new position
+						Jones.setXpos(3);
 						Jones.setYpos(19);
 						Jones.setHP(Jones.getHP() - 2);
 						currentSpace = array[Jones.getYpos()][Jones.getXpos()];
 					}
-
-					else			// If he hasn't crossed the abyss..
+			        // If he hasn't crossed the abyss..
+					else
 					{
 						menu.print(4);
 						Jones.setXpos(3);
