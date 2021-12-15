@@ -1,39 +1,19 @@
+CC=g++
+CFLAGS=-std=c++11 -Wall
+LFLAGS=-std=c++11
 
-TheGame: main.o menu.o game.o space.o spaceBlank.o spaceTrap.o spaceRock.o spaceHole.o indiana.o item.o link.o
-	g++ -std=c++11 main.o menu.o game.o space.o spaceBlank.o spaceTrap.o spaceRock.o spaceHole.o indiana.o item.o link.o -o IndianaJones
+MODS=main menu game space spaceBlank spaceTrap spaceRock spaceHole indiana item link
+SRC=./src
+OBJ=./obj
 
-main.o: main.cpp
-	g++ -std=c++11 -c main.cpp
+objects= $(addsuffix .o, $(addprefix $(OBJDIR)/, $(MODS)))
+sources= $(addsuffix .cpp, $(addprefix $(SRCDIR)/, $(MODS)))
 
-menu.o: menu.cpp menu.hpp
-	g++ -std=c++11 -c menu.cpp
+TheGame: $(objects)
+	$(CC) $(LFLAGS) $(objects) -o $@
 
-game.o: game.cpp game.hpp	
-	g++ -std=c++11 -c game.cpp
-
-space.o: space.cpp space.hpp
-	g++ -std=c++11 -c space.cpp
-
-spaceBlank.o: spaceBlank.cpp spaceBlank.hpp
-	g++	-std=c++11 -c spaceBlank.cpp
-
-spaceTrap.o: spaceTrap.cpp spaceTrap.hpp
-	g++ -std=c++11 -c spaceTrap.cpp
-
-spaceRock.o: spaceRock.cpp spaceRock.hpp
-	g++ -std=c++11 -c spaceRock.cpp
-
-spaceHole.o: spaceHole.cpp spaceHole.hpp
-	g++ -std=c++11 -c spaceHole.cpp
-
-indiana.o: indiana.cpp indiana.hpp	
-	g++ -std=c++11 -c indiana.cpp
-
-item.o: item.cpp item.hpp
-	g++ -std=c++11 -c item.cpp
-
-link.o: link.cpp link.hpp
-	g++ -std=c++11 -c link.cpp
+./obj/%.o: ./src/%.cpp
+	$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 clean:
-	rm *.o TheGame
+	rm -f obj/*.o TheGame
