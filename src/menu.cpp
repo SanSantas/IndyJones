@@ -18,7 +18,6 @@ using std::string;
 // Constructor initializes validInput to false to force first-iteration check of user-input
 Menu::Menu()
 {
-	bool validInput = false;
 }
 
 /*************************************
@@ -209,13 +208,14 @@ bool Menu::validate(int bottom, int top)
 		cin.clear();
 		cin.ignore(256, '\n');
 		inputBool = true;
-		return inputBool;
 	}
 	//Prompt user for reentry if they entered an integer if outside acceptable range
 	else
 	{	
 		cout << "   Please enter an integer between " << bottom << " and " << top << ".\n   ";
 	}
+
+    return inputBool;
 }
 
 /***********************************

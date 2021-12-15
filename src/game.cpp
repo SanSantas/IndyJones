@@ -108,7 +108,7 @@ Game::Game()
 						array[i][j] = new RockSpace;
 					}
 
-					else if (i == 1 && j == 4 || i == 1 && j == 2 || i == 0 && j == 3)				// Surrounding idol spaces are Rocks for aesthetic purposes
+					else if ((i == 1 && j == 4) || (i == 1 && j == 2) || (i == 0 && j == 3))				// Surrounding idol spaces are Rocks for aesthetic purposes
 					{
 						array[i][j] = new RockSpace;
 					}

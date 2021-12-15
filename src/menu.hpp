@@ -17,7 +17,6 @@ class Menu
 private:
 	
 	// Store input validity and user choice within Menu
-	bool validInput;
 	int choice;
 
 public:
