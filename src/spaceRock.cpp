@@ -9,7 +9,10 @@
 
 RockSpace::RockSpace()
 {
+}
 
+RockSpace::~RockSpace()
+{
 }
 
 int RockSpace::action()

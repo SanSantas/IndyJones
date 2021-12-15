@@ -20,6 +20,7 @@ private:
 public:
 	
     TrapSpace();
+    virtual ~TrapSpace();
 
     int action();
     char getType();

@@ -7,6 +7,7 @@
 
 #include "space.hpp"
 #include <string>
+
 using std::string;
 
 #ifndef BLANKSPACE_HPP
@@ -20,6 +21,7 @@ public:
 	
     // blank constructor
     BlankSpace();
+    virtual ~BlankSpace();
 
     // No action
     int action();

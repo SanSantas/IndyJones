@@ -19,7 +19,7 @@ private:
 public:
 	
     HoleSpace();
-
+    virtual ~HoleSpace();
     int action();
     char getType();
 };

@@ -17,6 +17,9 @@ BlankSpace::BlankSpace()
 {
 }
 
+BlankSpace::~BlankSpace()
+{
+}
 /***********************************
   *             Action()
   * 

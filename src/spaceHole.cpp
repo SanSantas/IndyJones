@@ -11,7 +11,9 @@
 
 HoleSpace::HoleSpace()
 {
-
+}
+HoleSpace::~HoleSpace()
+{
 }
 
 /***********************************

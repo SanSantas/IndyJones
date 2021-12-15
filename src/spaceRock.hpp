@@ -20,6 +20,7 @@ private:
 public:
 	
     RockSpace();
+    virtual ~RockSpace();
 
     int action();
     char getType();

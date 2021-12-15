@@ -26,6 +26,7 @@ protected:
 public:
 
 	Space();
+    virtual ~Space();
 
     // Functions return pointers to adjacent spaces
     Space * getUp();

@@ -19,6 +19,9 @@ Space::Space()
     right   = nullptr;
     left    = nullptr;
 }
+Space::~Space()
+{
+}
 
 /***********************************
   *             getUp()

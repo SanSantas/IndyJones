@@ -10,7 +10,10 @@
 
 TrapSpace::TrapSpace()
 {
+}
 
+TrapSpace::~TrapSpace()
+{
 }
 
 int TrapSpace::action()
