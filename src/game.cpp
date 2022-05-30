@@ -290,6 +290,7 @@ Game::Game()
 				{	validInput = Jones.validateDirection();	}
 
 				direction = Jones.getDirection();
+                menu.clear();
 
 				// clear Screen if not pickin an item..
 				if (direction != 'i')
