@@ -7,5 +7,11 @@ randomly assigned on each game load.
 
 `Space*** array = new Space ** [rows];`
 
+Another notable achievement comes from instantiating the Indiana character object on line 53 of game.cpp, allowing
+for a single line of code that is simply
+
+`Indiana Jones;`
+
 Use Indy's items to get the golden idol without dying.
+
 Includes an intermediately sophisticated GNU makefile.
