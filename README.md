@@ -14,4 +14,5 @@ for a single line of code that is simply
 
 Use Indy's items to get the golden idol without dying.
 
-Includes an intermediately sophisticated GNU makefile.
+Includes an intermediately sophisticated GNU makefile. Clone the repo, compile with `make`, and play with 
+`./TheGame`
